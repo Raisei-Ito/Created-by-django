@@ -1,6 +1,6 @@
 # Django Learning Project
 
-このプロジェクトは、Udemy講座「[Django 3app](https://www.udemy.com/course/django-3app/?couponCode=CP130525JP)」を参考に作成したDjango学習用のWebアプリケーションです。
+このプロジェクトは、Udemy講座「[【徹底的に解説！】Djangoの基礎をマスターして、3つのアプリを作ろう！](https://www.udemy.com/course/django-3app/?couponCode=CP130525JP)」を参考に作成したDjango学習用のWebアプリケーションです。
 
 ## プロジェクト概要
 
@@ -13,10 +13,10 @@
 
 ## 技術スタック
 
-- **Backend**: Django 3.x
+- **Backend**: Django
 - **Database**: SQLite（開発環境）
 - **Frontend**: HTML, CSS, Bootstrap
-- **Python**: 3.x
+- **Python**: 3.8.10
 
 ## プロジェクト構成
 
