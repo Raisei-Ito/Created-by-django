@@ -1,2 +1,1 @@
-# Created-by-django
-djangoで作成したwebアプリ
+詳しい説明はmainで行っています。
