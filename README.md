@@ -1,7 +1,3 @@
-# Django Learning Project
-
-このプロジェクトは、Udemy講座「[【徹底的に解説！】Djangoの基礎をマスターして、3つのアプリを作ろう！](https://www.udemy.com/course/django-3app/?couponCode=CP130525JP)」を参考に作成したDjango学習用のWebアプリケーションです。
-
 ## プロジェクト概要
 
 複数のDjangoアプリケーションを統合した学習用プロジェクトで、以下の機能を実装しています：
