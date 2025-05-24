@@ -13,21 +13,6 @@
 - **Frontend**: HTML, CSS, Bootstrap
 - **Python**: 3.8.10
 
-## プロジェクト構成
-
-```
-Created-by-django/
-├── blogapp/              # ブログアプリケーション
-├── accounts/             # ユーザー認証・アカウント管理
-├── boardapp/             # 掲示板アプリケーション
-├── myproject/            # プロジェクト設定
-├── static/               # 静的ファイル（CSS、JavaScript、画像）
-├── templates/            # HTMLテンプレート
-├── media/                # アップロードされたファイル
-├── manage.py             # Django管理コマンド
-└── requirements.txt      # 依存関係（存在する場合）
-```
-
 ## セットアップ手順
 
 ### 1. リポジトリのクローン
