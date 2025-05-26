@@ -5,6 +5,11 @@
 - **ブログアプリ（blogapp）**: 記事の投稿・閲覧機能
 - **アカウント管理（accounts）**: ユーザー認証・プロフィール管理
 
+ユーザーのログインが行われていないと./listではログイン画面が表示され、ユーザーの作成が必要になる
+![image.png](boardproject/images_file/user_input.png)
+ログインされている場合は/loginに遷移し、下記の画像のメモ一覧が表示される
+![image.png](./Created-by-django/boardproject/images_file/list.png)
+
 ## 技術スタック
 
 - **Backend**: Django
