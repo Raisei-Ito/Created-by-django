@@ -8,7 +8,9 @@
 ユーザーのログインが行われていないと./listではログイン画面が表示され、ユーザーの作成が必要になる
 ![image.png](boardproject/images_file/user_input.png)
 ログインされている場合は/loginに遷移し、下記の画像のメモ一覧が表示される
-![image.png](./Created-by-django/boardproject/images_file/list.png)
+![image.png](boardproject/images_file/list.png)
+それぞれのメモについてはクリックすることで詳細の確認が可能である
+![image.png](boardproject/images_file/list_2.png)
 
 ## 技術スタック
 
