@@ -104,11 +104,50 @@ Django管理画面にアクセスするには：
 - 静的ファイルの管理
 - Django管理画面の活用
 
-## 参考資料
+### 本番環境でのデプロイ
 
+本番環境では以下の流れでデプロイを行います。
+
+- **whitenoiseを使用した静的ファイルのアップロード**  
+  `whitenoise` を導入することで、Django アプリが静的ファイル（CSSやJS、画像など）を自身で直接配信できるようになります。
+  ```bash
+    pip install whitenoise
+    ```
+- **collectstaticを使用して、静的ファイルを一か所にまとめる**  
+  `python manage.py collectstatic` を実行し、各アプリ内に散らばっている静的ファイルを `STATIC_ROOT` にまとめます。
+
+- **Procfileの準備**  
+  HerokuでDjangoを動かすために、プロジェクトのルートディレクトリに `Procfile` を作成し、以下の内容を記述します：
+
+  ```
+  web: gunicorn プロジェクト名.wsgi --log-file -
+  ```
+  ※ `プロジェクト名` は `manage.py` があるディレクトリ名を指定します。
+
+- **requirements.txtの準備**  
+  Herokuに必要なPythonパッケージを伝えるため、 `requirements.txt` を作成します：
+
+
+- **runtime.txtの準備（必要に応じて）**  
+  Pythonのバージョンを指定する場合は、以下のように `runtime.txt` を作成します：
+
+  ```
+  python-3.11.2
+  ```
+
+- **作成したアプリをGitHubのリポジトリにアップロードする**  
+  作成したDjangoアプリのコードをGitHubリポジトリにプッシュします。
+
+- **GitHubリポジトリからHerokuでデプロイする**  
+  HerokuのダッシュボードまたはCLIからGitHubリポジトリを連携させ、デプロイを実行します。
+
+- **Heroku環境変数の設定**  
+  Heroku上では `SECRET_KEY` や `DEBUG=False` などの設定を環境変数（Config Vars）として登録し、本番用の安全な設定で運用します。
+
+## 参考資料
+- [django チュートリアル](https://www.youtube.com/playlist?list=PLuCS8p0T7ozK4Ne1e5eAVG2R5Gbs1naix)
 - [Udemy講座: Django 3app](https://www.udemy.com/course/django-3app/?couponCode=CP130525JP)
 - [Django公式ドキュメント](https://docs.djangoproject.com/)
-
 
 ## 作成者
 
@@ -116,6 +155,6 @@ Django管理画面にアクセスするには：
 
 ## 注意事項
 
-- このプロジェクトは学習用途として作成されており、本番環境での使用は想定されていません
+- このプロジェクトは学習用途として作成されています
 - セキュリティ設定やパフォーマンス最適化は学習範囲に含まれていない場合があります
 - 実際の開発では、より厳密なセキュリティ対策や設定が必要です
