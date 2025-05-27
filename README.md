@@ -111,8 +111,8 @@ Django管理画面にアクセスするには：
 - **whitenoiseを使用した静的ファイルのアップロード**  
   `whitenoise` を導入することで、Django アプリが静的ファイル（CSSやJS、画像など）を自身で直接配信できるようになります。
   ```bash
-    pip install whitenoise
-    ```
+  pip install whitenoise
+  ```
 - **collectstaticを使用して、静的ファイルを一か所にまとめる**  
   `python manage.py collectstatic` を実行し、各アプリ内に散らばっている静的ファイルを `STATIC_ROOT` にまとめます。
 
