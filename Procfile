@@ -1,1 +1,1 @@
-web: gunicorn blogpress.wsgi
+web: gunicorn blogpress_app_practice.wsgi
