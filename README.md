@@ -149,18 +149,6 @@ Django管理画面にアクセスするには：
 2. `http://127.0.0.1:8000/admin/` にアクセス
 3. 作成したスーパーユーザーでログイン
 
-## 学習内容
-
-このプロジェクトを通じて以下のDjangoの概念を学習した：
-
-- Djangoプロジェクトの構造と設定
-- モデル（Model）の定義とデータベース操作
-- ビュー（View）の実装
-- テンプレート（Template）の作成
-- URL設定とルーティング
-- ユーザー認証システム
-- 静的ファイルの管理
-- Django管理画面の活用
 
 ## 本番環境でのデプロイ
 
@@ -196,7 +184,6 @@ Django管理画面にアクセスするには：
 
 ## 参考資料
 - [django チュートリアル](https://www.youtube.com/playlist?list=PLuCS8p0T7ozK4Ne1e5eAVG2R5Gbs1naix)
-- [Udemy講座: Django 3app](https://www.udemy.com/course/django-3app/?couponCode=CP130525JP)
 - [Django公式ドキュメント](https://docs.djangoproject.com/)
 
 ## 作成者
