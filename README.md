@@ -81,7 +81,7 @@ cd blogpress-app-practice
 ```
 
 ### 2. 仮想環境の作成と有効化
-wslを使用したので、構築をしていない場合はこちらのリンクを確認
+wslを使用したので、macos,linuxを使用していないwindowsユーザーは[こちらのリポジトリ](https://github.com/Raisei-Ito/Compiler_installation_wsl)を確認
 ```bash
 # 仮想環境の作成
 python3 -m venv venv
