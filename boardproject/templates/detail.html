@@ -1,23 +1,102 @@
 {% extends 'base.html' %}
 
-{% block header %}
-<div class="alert alert-primary" role="alert">
-    <h3>detail page</h3>
-</div>
-{% endblock header %}
+{% block title %}{{ object.title }}{% endblock %}
+
+{% block customcss %}
+<style>
+  .post-header {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+  .post-image {
+    border-radius: 0.5rem;
+    max-width: 100%;
+    height: auto;
+    margin: 1.5rem 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,.1);
+  }
+  .post-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  .post-stats {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1rem;
+    color: #6c757d;
+  }
+  .post-meta {
+    color: #6c757d;
+    font-size: 0.9rem;
+  }
+  .btn-action {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+</style>
+{% endblock customcss %}
 
 {% block content %}
 {% if user.is_authenticated %}
-<div class="container">
-    <div class="alert alert-success" role="alert">
-        <p>タイトル:{{ object.title }}</p>
-        <p>投稿者:{{ object.author }}</p>
-        <p><img src="{{ object.snsimage.url }}" width=300></p>
-        <a href="{% url 'good' object.pk %}" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">いいねする</a>
-        <a href="{% url 'read' object.pk %}" class="btn btn-secondary" tabindex="-1" role="button" aria-disabled="true">既読にする</a>
+  <div class="post-header">
+    <div class="d-flex justify-content-between align-items-start">
+      <div>
+        <h1 class="h2 mb-3">{{ object.title }}</h1>
+        <div class="post-meta">
+          <span class="me-3">
+            <i class="fas fa-user me-1"></i>
+            {{ object.author }}
+          </span>
+          <span>
+            <i class="fas fa-calendar me-1"></i>
+            {{ object.created_at|date:"Y年n月j日" }}
+          </span>
+        </div>
+      </div>
+      <div class="post-stats">
+        <span>
+          <i class="fas fa-heart text-danger me-1"></i>
+          {{ object.good }}いいね
+        </span>
+        <span>
+          <i class="fas fa-eye text-primary me-1"></i>
+          {{ object.read }}閲覧
+        </span>
+      </div>
     </div>
-</div>
+
+    {% if object.snsimage %}
+      <img src="{{ object.snsimage.url }}" alt="{{ object.title }}" class="post-image">
+    {% endif %}
+
+    <div class="post-actions">
+      <a href="{% url 'good' object.pk %}" class="btn btn-primary btn-action">
+        <i class="fas fa-heart"></i>
+        いいねする
+      </a>
+      <a href="{% url 'read' object.pk %}" class="btn btn-secondary btn-action">
+        <i class="fas fa-check"></i>
+        既読にする
+      </a>
+      <a href="{% url 'list' %}" class="btn btn-outline-secondary btn-action">
+        <i class="fas fa-arrow-left"></i>
+        一覧に戻る
+      </a>
+    </div>
+  </div>
 {% else %}
-please login
+  <div class="text-center py-5">
+    <h2>ログインが必要です</h2>
+    <p class="lead text-muted">この投稿を見るにはログインしてください。</p>
+    <div class="mt-4">
+      <a href="{% url 'login' %}" class="btn btn-primary me-2">ログイン</a>
+      <a href="{% url 'signup' %}" class="btn btn-outline-primary">新規登録</a>
+    </div>
+  </div>
 {% endif %}
 {% endblock content %}

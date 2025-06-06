@@ -1,25 +1,96 @@
 {% extends 'base.html' %}
 
-{% block header %}
-<div class="alert alert-primary" role="alert">
-    <h3>研究室内メモ</h3>
-</div>
-{% endblock header %}
+{% block title %}投稿一覧{% endblock %}
+
+{% block customcss %}
+<style>
+  .post-card {
+    transition: transform 0.2s;
+    margin-bottom: 1.5rem;
+  }
+  .post-card:hover {
+    transform: translateY(-5px);
+  }
+  .post-stats {
+    font-size: 0.9rem;
+    color: #6c757d;
+  }
+  .post-author {
+    color: #0d6efd;
+    text-decoration: none;
+  }
+  .post-author:hover {
+    text-decoration: underline;
+  }
+  .empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+  }
+</style>
+{% endblock customcss %}
 
 {% block content %}
 {% if user.is_authenticated %}
-<div class="container">
-    {% for item in object_list %}
-    <div class="alert alert-success" role="alert">
-        <p>タイトル:<a href="{% url 'detail' item.pk %}">{{ item.title }}</a></p>
-        <p>投稿者:{{ item.author }}</p>
-        <a href="#" class="btn btn-primary disabled" tabindex="-1" role="button" aria-disabled="true">いいね{{item.good}}件</a>
-        <a href="#" class="btn btn-secondary disabled" tabindex="-1" role="button" aria-disabled="true">既読{{item.read}}</a>
+  <div class="row mb-4">
+    <div class="col">
+      <h1 class="h3 mb-0">最新の投稿</h1>
     </div>
-    {% endfor %}
-    <a href="{% url 'logout' %}">logout</a>
-</div>
+    <div class="col text-end">
+      <a href="{% url 'create' %}" class="btn btn-primary">
+        <i class="fas fa-plus me-2"></i>新規投稿
+      </a>
+    </div>
+  </div>
+
+  {% if object_list %}
+    <div class="row">
+      {% for item in object_list %}
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card post-card shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">
+                <a href="{% url 'detail' item.pk %}" class="text-decoration-none text-dark">
+                  {{ item.title }}
+                </a>
+              </h5>
+              <p class="card-text text-muted mb-2">
+                <small>
+                  投稿者: <a href="#" class="post-author">{{ item.author }}</a>
+                </small>
+              </p>
+              <div class="post-stats d-flex gap-3">
+                <span>
+                  <i class="fas fa-heart text-danger"></i>
+                  {{ item.good }}
+                </span>
+                <span>
+                  <i class="fas fa-eye text-primary"></i>
+                  {{ item.read }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="empty-state">
+      <i class="fas fa-edit fa-3x text-muted mb-3"></i>
+      <h3>投稿がまだありません</h3>
+      <p class="text-muted">最初の投稿を作成してみましょう！</p>
+      <a href="{% url 'create' %}" class="btn btn-primary">
+        <i class="fas fa-plus me-2"></i>新規投稿を作成
+      </a>
+    </div>
+  {% endif %}
 {% else %}
-please login
+  <div class="text-center py-5">
+    <h2>ようこそ、ブログプレスへ！</h2>
+    <p class="lead text-muted">投稿を見るにはログインが必要です。</p>
+    <div class="mt-4">
+      <a href="{% url 'login' %}" class="btn btn-primary me-2">ログイン</a>
+      <a href="{% url 'signup' %}" class="btn btn-outline-primary">新規登録</a>
+    </div>
+  </div>
 {% endif %}
 {% endblock content %}
