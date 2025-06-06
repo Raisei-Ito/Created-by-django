@@ -1,4 +1,4 @@
-# BlogPress App Practice
+# BlogPress App
 
 ## 目次
 - [概要](#概要)
