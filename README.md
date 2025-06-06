@@ -133,7 +133,7 @@ python3 manage.py runserver
 
 未ログイン状態で`/list`にアクセスすると、以下のログイン画面が表示されます。  
 初回利用時はアカウントの作成が必要です。既存のアカウントを持っている場合は、ユーザー名とパスワードを入力してログインボタンをクリックしてください。セキュリティのため、パスワードは暗号化されて管理されています。
-![image.png](boardproject/images_file/user_input.png)
+![image.png](boardproject/images_file/login.png)
 
 ### 2. メモ一覧表示
 ログイン後は`/login`に遷移し、メモ一覧が表示されます。  
