@@ -72,7 +72,7 @@
 
 ## 使用方法
 ### デモ動画
-![デモ動画](boardproject/images_file/blogapp_movie.gif)
+![デモ動画](boardproject/images_file/blogpress.gif)
 
 ### 1. ログイン画面
 
